@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beam Length Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Size Beam Length Predictor By Weaving QA</h2>
+        <label for="count">Count:</label>
+        <input type="number" id="count" placeholder="Enter count">
+        
+        <label for="width">Width:</label>
+        <input type="number" id="width" placeholder="Enter width">
+        
+        <label for="totalEnds">Total Ends:</label>
+        <input type="number" id="totalEnds" placeholder="Enter total ends">
+        
+        <label for="flange">Flange Used:</label>
+        <input type="number" id="flange" placeholder="Enter flange used">
+        
+        <button onclick="calculateBeamLength()">Calculate Beam Length</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateBeamLength() {
+            let count = parseFloat(document.getElementById('count').value);
+            let width = parseFloat(document.getElementById('width').value);
+            let totalEnds = parseFloat(document.getElementById('totalEnds').value);
+            let flange = parseFloat(document.getElementById('flange').value);
+            
+            if (isNaN(count) || isNaN(width) || isNaN(totalEnds) || isNaN(flange)) {
+                document.getElementById('result').innerHTML = "Please enter valid inputs.";
+                return;
+            }
+    
+            // Correct formula implementation
+            let beamLength = 500 + (25 * count) - (2.5 * width) + (0.3 * totalEnds) + (10 * flange);
+            
+            let lowerBound = beamLength - 500;
+            let upperBound = beamLength + 500;
+    
+            document.getElementById('result').innerHTML = `
+                <b>Beam Length:</b> ${beamLength.toFixed(2)}<br>
+                <b>Range:</b> ${lowerBound.toFixed(2)} - ${upperBound.toFixed(2)}
+            `;
+        }
+    </script>
+    
+    
+    
+</body>
+</html>
