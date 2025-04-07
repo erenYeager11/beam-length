@@ -93,8 +93,8 @@
         <label for="flange">Flange Used:</label>
         <input type="number" id="flange" placeholder="Enter flange used">
 
-        <label for="betweenFlange">Between Flange:</label>
-        <input type="number" id="betweeFlange" placeholder="Enter flange used">
+        <!-- <label for="betweenFlange">Between Flange:</label>
+        <input type="number" id="betweeFlange" placeholder="Enter flange used"> -->
         
         <button onclick="calculateBeamLength()">Calculate Beam Length</button>
         
@@ -106,15 +106,15 @@
             let width = parseFloat(document.getElementById('width').value);
             let totalEnds = parseFloat(document.getElementById('totalEnds').value);
             let flange = parseFloat(document.getElementById('flange').value);
-            let betweenFlange = parseFloat(document.getElementById('betweenFlangeflange').value);
+            // let betweenFlange = parseFloat(document.getElementById('betweenFlangeflange').value);
             
-            if (isNaN(count) || isNaN(width) || isNaN(totalEnds) || isNaN(flange) || isNaN(betweenFlange)) {
+            if (isNaN(count) || isNaN(width) || isNaN(totalEnds) || isNaN(flange)  ) {
                 document.getElementById('result').innerHTML = "Please enter valid inputs.";
                 return;
             }
     
             // let beamLength = -15400 + 168.1 * count + 31.18 * width - 0.5357 * totalEnds + 124.8 * flange;
-            let beamLength = -16138 + 198 * count + 29.10 * width*betweenFlange - 0.7139 * totalEnds + 142.9 * flange;
+            let beamLength = -16138 + 198 * count + 29.10 * width - 0.7139 * totalEnds + 142.9 * flange;
             
             let lowerBound = beamLength - 250;
             let upperBound = beamLength + 250;
